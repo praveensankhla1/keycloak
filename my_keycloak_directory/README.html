@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<center> <u> <h1 style="font-size: 50px;">Keycloak Setup</h1> </u> </center>
+<h2 id="1-task-requirement">1. Task Requirement :</h2>
+<ul>
+<li>
+<p>Integration of Google Auth with KeyCloak as an Identity Provider</p>
+</li>
+<li>
+<p>Creating a login page in Vuejs which will authenticate with google using Keycloak and Keycloak FreeOTP service.</p>
+</li>
+</ul>
+<h2 id="2-environment-details">2. Environment details :</h2>
+<ul>
+<li>
+<p>Os:- Ubuntu 20.04.6 LTS</p>
+</li>
+<li>
+<p>Podman- 3.4.2</p>
+</li>
+<li>
+<p>Nodejs-v16.20.0</p>
+</li>
+<li>
+<p>Npm-8.19.4</p>
+</li>
+</ul>
+<h2 id="3-tools-and-technologies">3. Tools and technologies :</h2>
+<ul>
+<li>Keycloak: 21.1.1</li>
+<li>Google Cloud Paltform
+https://console.cloud.google.com/apis/library</li>
+<li>Vuejs-  3.3.4</li>
+</ul>
+<h2 id="4--definition-of-tools">4 . Definition of tools :</h2>
+<p><strong>a . Ubuntu 20.04.6 LTS:</strong> Ubuntu 20.04.6 LTS is a stable long-term support version of the Ubuntu Linux operating system.</p>
+<p><strong>b . Podman 3.4.2:</strong> Podman 3.4.2 is a containerization tool for managing and running containers on Linux systems.</p>
+<p><strong>c . Node.js v16.20.0:</strong> Node.js v16.20.0 is a JavaScript runtime for server-side applications.</p>
+<p><strong>d . npm 8.19.4:</strong> npm 8.19.4 is a JavaScript package manager for managing software dependencies.</p>
+<p><strong>e . Google Auth And FreeOTP using KeyCloak And Vue</strong>
+One of the strong points in favour of Keycloak adoption is the fact that you can setup social signin for your application with a few clicks, no coding requirements needed. Keycloak supports out-of-the box an extensive list of social networks: Google, Github, Facebook, Linkedin, Microsoft, Twitter and many other providers. It’s even flexible enough to support the integration of any OpenId Connect or SAML 2.0 provider.</p>
+<h2 id="5--command-for-the-setup-or-configuration">5 .  Command for the setup or configuration.</h2>
+<p><strong>a . Setup Keycloak using podman</strong></p>
+<p><strong>b . Podman</strong></p>
+<blockquote>
+<p>Get started with Keycloak on Podman</p>
+</blockquote>
+<p><strong>c . Before you start</strong></p>
+<blockquote>
+<p>Make sure you have Podman installed</p>
+</blockquote>
+<p><strong>d . Start Keycloak</strong>
+From a terminal, enter the following command to start Keycloak</p>
+<pre><code>podman run -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:21.1.1 start-dev
+</code></pre>
+<ul>
+<li>
+<p>This command starts Keycloak exposed on the <strong>local port 8080</strong> and creates an initial admin user with the username <strong>admin</strong> and password <strong>admin</strong>.</p>
+</li>
+<li>
+<p>Next, log into Keycloak Administration Console, available at: http://localhost:8080
+In your first Logi, you will be requested to create an administration user:</p>
+</li>
+</ul>
+<h2 id="6--screenshot-with-pass-test-cases-resultwhich-you-have-already-tested">6 . Screenshot with pass test cases result,which you have already tested.</h2>
+<p><strong>a . Welcome to Keycloak :</strong></p>
+<p><img src="key.png" alt=""></p>
+<p><strong>b . Next, login with the admin user you have just created:</strong></p>
+<p><img src="key 3.png" alt=""></p>
+<p><img src="docsify/key 3.png" alt=""></p>
+<p><strong>c . The Keycloak server</strong>
+Once you log in, Keycloak shows you the Master realm.</p>
+<p><strong>d . Realm Definition</strong>
+A realm manages a set of users, credentials, roles, and groups. A user belongs to and logs into a realm. Realms are isolated from one another and can only manage and authenticate the users that they control.</p>
+<p><strong>e . Create Realm for google Authentication</strong></p>
+<p><strong>Procedure</strong></p>
+<ul>
+<li>
+<p>Point to the top of the left pane.</p>
+</li>
+<li>
+<p>Click Create Realm.</p>
+</li>
+<li>
+<p>Add realm menu
+file:///tmp/mume2023717-2620-1ac73x.ewp7q.html</p>
+</li>
+</ul>
+<p><img src="master1.png" alt="Alt text"></p>
+<ul>
+<li>Enter a name for the realm</li>
+<li>Click Create.</li>
+</ul>
+<p><strong>f . Create realm</strong></p>
+<p><img src="crect.png" alt=""></p>
+<p>The current realm is now set to the realm you just created. You can switch between realms by clicking the realm name in the menu.</p>
+<p><strong>g . Configuring SSL for a realm</strong></p>
+<p>Each realm has an associated SSL Mode, which defines the SSL/HTTPS requirements for interacting with the realm. Browsers and applications that interact with the realm honor the SSL/HTTPS requirements defined by the SSL Mode or they cannot interact with the server.</p>
+<p><strong>Procedure</strong></p>
+<ul>
+<li>
+<p>Click <strong>Realm settings</strong> in the menu.</p>
+</li>
+<li>
+<p>Click the <strong>General</strong> tab.</p>
+</li>
+</ul>
+<p><strong>General tab</strong></p>
+<p><img src="5.png" alt=""></p>
+<p><strong>1 . Set <strong>Require SSL</strong> to one of the following SSL modes: <strong>example</strong></strong></p>
+<ul>
+<li>
+<p><strong><u>External requests</u></strong> Users can interact with Keycloak without SSL so long as they stick to private IP addresses such as localhost, 127.0.0.1, 10.x.x.x, 192.168.x.x, and 172.16.x.x. If you try to access Keycloak without SSL from a non-private IP address, you will get an error.</p>
+</li>
+<li>
+<p><strong><u>None</u></strong> Keycloak does not require SSL. This choice applies only in development when you are experimenting and do not plan to support this deployment.</p>
+</li>
+<li>
+<p><strong><u>All requests</u></strong> Keycloak requires SSL for all IP addresses.</p>
+</li>
+</ul>
+<p><strong>2 . Add Identity Provider from the list Choose Google</strong></p>
+<p><img src="6.png" alt=""></p>
+<p><strong>3. Copy Redirect URI to be used for google configuration.</strong></p>
+<p><img src="7.png" alt=""></p>
+<p><strong>4 . Setup  Google configuration for Authentication</strong></p>
+<ul>
+<li>
+<p>Login with your gmail account  the link https://console.cloud.google.com/</p>
+</li>
+<li>
+<p>In the Google Cloud console, go to Menu &gt; click on API and Services option.</p>
+</li>
+</ul>
+<p><img src="8.png" alt=""></p>
+<ul>
+<li>
+<p>Click on the Select a <strong>create a Project</strong> at the top left  and create a new project.</p>
+</li>
+<li>
+<p>In the <strong>Project Name</strong> field, enter a descriptive name for your project.</p>
+</li>
+</ul>
+<p><img src="9.png" alt=""></p>
+<p><strong>5 .  Click on the Oauth consent screen and configure it.</strong></p>
+<p><img src="10.png" alt=""></p>
+<p><img src="12.png" alt=""></p>
+<p><strong>6 . Setting up the credentials to get clientID and client secret</strong></p>
+<p><strong>Click on the Credentials -&gt; Create Credentials-&gt; OAuth Client ID-&gt; Application Type-&gt;
+Web Application</strong></p>
+<p><img src="13.png" alt=""></p>
+<p><strong>7 . Paste the redirect url which we copied from keycloak in the Authorized Redirect URL field.</strong></p>
+<p><img src="14.png" alt=""></p>
+<p><strong>8 . Click on Create then you will get client ID and client Secret. Copy both to be used in keycloak configuaration.</strong></p>
+<p><img src="15.png" alt=""></p>
+<p><strong>9 . Paste the ClientID and Client secret in google identity provider configuration.</strong></p>
+<p><img src="16.png" alt=""></p>
+<p><strong>10 . Create a Client in Keycloak and configure the Access Setting.</strong></p>
+<p><strong>Note- Input your Vue URL in the Valid Redirect URI fields, and set Web Origin to</strong></p>
+<p><img src="17.png" alt=""></p>
+<p><strong>11.  Now we have to setup the flow.</strong>
+<img src="18.png" alt=""></p>
+<p><strong>for authentication and post authentication of Identity provider.</strong></p>
+<p><strong>Your Realm-&gt; Authentication-&gt; first broker login-&gt;Click on the 3 dots -&gt;Choose Duplicate-&gt;Named the Duplicate Copy to any.</strong></p>
+<p><strong>12 . Click on first broker login match the flow as shown below</strong></p>
+<p><img src="broker .png" alt=""></p>
+<p><strong>13 . Click on the Copy of the first broker link. Remove all the steps and add OTP Form Steps
+As shown below</strong></p>
+<p><img src="copy.png" alt=""></p>
+<p><strong>14 . Setup the Flows in google identity provider configuration.</strong></p>
+<p><strong>Click on Identity Provider-&gt;google-&gt;Advance Setting-&gt;First Login Flow-&gt; Choose first borken login-&gt; Post login flow-&gt; Choose Copy of first broken login -&gt; Save</strong></p>
+<p><img src="setup.png" alt=""></p>
+<p><strong>15 . Setting up the  FreeOTP Configuration in keycloak.</strong></p>
+<p><strong>Click on Authentication-&gt; Required Action-&gt; Configure OTP -&gt; Enable → ON  and Set as default Action→ ON.</strong></p>
+<p><img src="up.png" alt=""></p>
+<p><strong>Verify the OTP Policy is same as shown below.</strong></p>
+<p><strong>h . Authenticate with Vue and Vite</strong></p>
+<p><strong>user@user-pc:~$ node --version
+v16.19.1</strong></p>
+<p><strong>1 . &gt; npm init vue@latest</strong></p>
+<pre><code>&gt; ✔ Project name: … &lt;your-project-name&gt;
+✔ Add TypeScript? … No / Yes
+✔ Add JSX Support? … No / Yes
+✔ Add Vue Router for Single Page Application development? … No / Yes
+✔ Add Pinia for state management? … No / Yes
+✔ Add Vitest for Unit testing? … No / Yes
+✔ Add Cypress for both Unit and End-to-End testing? … No / Yes
+✔ Add ESLint for code quality? … No / Yes
+  ✔ Add Prettier for code formatting? … No / Yes
+
+Scaffolding project in ./&lt;your-project-name&gt;...
+Done.   
+</code></pre>
+<blockquote>
+<p>cd <your-project-name></p>
+</blockquote>
+<blockquote>
+<p>npm install</p>
+</blockquote>
+<blockquote>
+<p>npm run dev</p>
+</blockquote>
+<p><strong>2 . Install keycloak adapter in Vuejs.</strong></p>
+<blockquote>
+<p>npm install keycloak-js@12.0.4</p>
+</blockquote>
+<p><strong>3 . Create js file in vue for keycloak configuration
+and paste the code shown below.</strong></p>
+<p><strong>auth.js</strong></p>
+<pre><code>import Keycloak from 'keycloak-js';
+const keycloak = new Keycloak({
+  url: 'http://localhost:8080',
+realm: 'googleAuth',
+  clientId: 'app-vue',
+  });
+export default keycloak
+</code></pre>
+<p><strong>4 . Create Login Page in vue</strong></p>
+<p><strong>Login Page.Vue</strong></p>
+<pre><code>&lt;template&gt;
+&lt;div class=&quot;box-form&quot;&gt;
+&lt;div class=&quot;left&quot;&gt;
+&lt;div class=&quot;overlay&quot;&gt;
+&lt;h1 style=&quot;margin-top:40px;&quot;&gt;Keen&lt;/h1&gt;
+   &lt;h1 style=&quot;margin-left: 170px; margin-top:1px;&quot;&gt;Able&lt;/h1&gt;
+&lt;span&gt;
+ &lt;p style=&quot;text-align: center; font-weight: bold;&quot;&gt;Always Been Open!&lt;/p&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+ &lt;/div&gt;
+
+&lt;div class=&quot;right&quot;&gt;
+&lt;h5&gt;Login&lt;/h5&gt;
+&lt;div class=&quot;inputs&quot;&gt;
+ &lt;button  @click=&quot;login&quot;&gt;&lt;i class=&quot;fa-brands fa-google&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; LogIn with Google&lt;/button&gt;
+&lt;/div&gt;   
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import keycloak from '../auth'
+export default {
+name:&quot;LogIn&quot;,
+methods: {
+login() {
+keycloak.init().then(() =&gt; {
+ keycloak.login({
+   idpHint: 'google',
+   redirectUri: 'http://localhost:5173/home'
+   });
+  });
+}
+}
+} 
+&lt;/script&gt;
+</code></pre>
+<p><strong>5 . Create Home Page after successful login to redirect.</strong></p>
+<p><strong>HomePage.vue</strong></p>
+<pre><code>&lt;template&gt;
+&lt;div&gt;
+&lt;h1&gt;
+ Welcome
+ &lt;p&gt;&lt;/p&gt;
+ {{ usermail }}
+&lt;/h1&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; @click=&quot;logOut&quot;&gt;
+ LogOut
+ &lt;/button&gt;
+ &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import keycloak from &quot;../auth&quot;;
+import axios from &quot;axios&quot;;
+export default {
+name: &quot;HomePage&quot;,
+data() {
+return {
+ usermail: &quot;&quot;,
+ refreshToken: &quot;&quot;,
+ auth:false
+};
+},
+created() {
+keycloak
+ .init({
+   onLoad: &quot;check-sso&quot;,
+   silentCheckSsoRedirectUri:
+     window.location.origin + &quot;/silent-check-sso.html&quot;,
+   pkceMethod: &quot;S256&quot;,
+ })
+ .then((authenticated) =&gt; {
+   if (authenticated) {
+     console.log(&quot;User is authenticated&quot;);
+     keycloak.loadUserProfile().then((profile) =&gt; {
+       console.log(&quot;User profile&quot;, profile);
+       this.usermail = profile.email;
+       console.log(&quot;typeof&quot;, typeof passpof);
+       const accessToken = keycloak.token;
+       this.refreshToken = keycloak.refreshToken;
+       console.log(&quot;hii deepak&quot;, accessToken);
+       console.log(&quot;hii deepak&quot;, refreshToken);
+       this.auth=true
+     });
+   } else {
+     console.log(&quot;User is not authenticated&quot;);
+   }
+ })
+ .catch((err) =&gt; {
+   console.error(&quot;Error initializing Keycloak&quot;, err);
+ 
+ });
+ },
+  methods: {
+  logOut() {
+ const headers = {
+   &quot;Content-type&quot;: &quot;application/x-www-form-urlencoded&quot;,
+ };
+
+
+ var params = new URLSearchParams();
+ params.append(&quot;client_id&quot;, &quot;app-vue&quot;);
+ params.append(&quot;refresh_token&quot;, this.refreshToken);
+ axios
+    .post(
+     &quot;http://localhost:8080/realms/googleAuth/protocol/openid-connect/logout?redirect_uri=http%3A%2F%2Flocalhost%3A5173&quot;,
+     params,
+     { headers }
+   )
+   .then((response) =&gt; {
+     console.log(&quot;hii there&quot;, response.data);
+     window.location.href = &quot;http://localhost:5173&quot;;
+   })
+   .catch((e) =&gt; {
+       console.log(&quot;eorro&quot;)
+     });
+     },
+   },
+};
+&lt;/script&gt;
+</code></pre>
+<p><strong>i . Running the application and Authenticate with Google and FreeOTP</strong></p>
+<blockquote>
+<p>npm run dev</p>
+</blockquote>
+<p><img src="keen.png" alt=""></p>
+<p><strong>j . Install FreeOTP app from play store and scan it for first time. Input 6 digit Code</strong></p>
+<p><img src="free.png" alt=""></p>
+<p><strong>k . Successfully Logged In…</strong></p>
+<p><img src="full.png" alt=""></p>
+<h2 id="4-reference-link">4. Reference Link</h2>
+<p>https://keycloakthemes.com/blog/how-to-setup-sign-in-with-google-using-keycloak
+https://www.keycloak.org/docs/latest/securing_apps/#_javascript_adapter</p>
+
+</body>
+</html>
